@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Member {
 
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
@@ -21,6 +23,7 @@ public class Member {
     @Embedded // 둘 중에 하나만 있어도 됨
     private Address address;
 
-    @OneToMany(mappedBy = "member") //읽기전용
+    @OneToMany(mappedBy = "member",
+            fetch = FetchType.LAZY) //읽기전용
     private List<Order> orders = new ArrayList<>();
 }
