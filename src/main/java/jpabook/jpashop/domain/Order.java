@@ -23,10 +23,19 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = LAZY)
+    //cascadeType설정을 하지 않을 시 각 엔티티를 모두 persist해야하는데.
+    //em.persist(orderItemA)
+    //em.persist(orderItemB)
+    //em.persist(orderItemC)
+    //em.persist(order)
+    //각각 저장을 해주어야 하는데
+    //cascadeType을 사용하게 되면
+    //em.psersist(order)만 사용해도 전부 저장된다.
+
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
