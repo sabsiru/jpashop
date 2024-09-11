@@ -7,7 +7,7 @@ import lombok.Setter;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
-@Getter
+@Getter @Setter
 public class Delivery {
 
     @Id @GeneratedValue
