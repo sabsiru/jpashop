@@ -22,9 +22,9 @@ public class MemberServiceTest {
     MemberService memberService;
     @Autowired
     MemberRepository memberRepository;
+    @Autowired EntityManager em;
 
     @Test
-    //@Rollback(false) 롤백 하지않고 commit함.
     public void 회원가입() throws Exception {
         //given
         Member member = new Member();
@@ -34,6 +34,7 @@ public class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         //then
+        em.flush(); //강제로 DB에 쿼리를 실행함
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
