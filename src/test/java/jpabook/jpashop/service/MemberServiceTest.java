@@ -42,6 +42,7 @@ public class MemberServiceTest {
     public void 중복_회원_예외() throws Exception {
         //given
 
+
         //when
 
         //then
