@@ -22,7 +22,8 @@ public class MemberServiceTest {
     MemberService memberService;
     @Autowired
     MemberRepository memberRepository;
-    @Autowired EntityManager em;
+    @Autowired
+    EntityManager em;
 
     @Test
     public void 회원가입() throws Exception {
@@ -38,14 +39,21 @@ public class MemberServiceTest {
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class) //try-catch를 사용하지 않아도 예외를 잡아줌
     public void 중복_회원_예외() throws Exception {
         //given
+        Member member1 = new Member();
+        member1.setName("kim");
 
+        Member member2 = new Member();
+        member2.setName("kim");
 
         //when
+        memberService.join(member1);
+        memberService.join(member2); //예외 발생
 
         //then
+        fail("예외가 발생해야 한다");
     }
 
 }
