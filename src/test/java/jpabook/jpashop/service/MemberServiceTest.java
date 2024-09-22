@@ -49,7 +49,6 @@ public class MemberServiceTest {
         member2.setName("kim");
 
 
-
         //when
         memberService.join(member1);
         memberService.join(member2); //예외 발생
