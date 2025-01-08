@@ -15,6 +15,8 @@ import static jakarta.persistence.FetchType.LAZY;
 public class OrderItem {
 
     @Id @Getter
+    //테스트시 오류 나서 추가함.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
     private Long id;
 
