@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none #운영에서 사용 x
+      ddl-auto: create #운영에서 사용 x
     properties:
       hibernate:
         show_sql: true #운영에서는 사용 x
